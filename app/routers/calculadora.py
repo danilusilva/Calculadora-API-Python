@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from ..models import OperacaoDoisNumeros
+from ..models import OperacaoDoisNumeros, Operacao
 
 
 router = APIRouter(prefix="/calc", tags=["Calculadora"])
@@ -29,7 +29,7 @@ def potenciacao(dados: OperacaoDoisNumeros):
     return {"Resultado: ":dados.a ** dados.b}
 
 @router.post("/raiz")
-def raiz(dados: OperacaoDoisNumeros):
-    resultado =  dados.a ** (1/dados.b)
+def raiz(dados: Operacao):
+    resultado =  dados.radicando ** (1/dados.indice)
     return {"Resultado: ":resultado}
 
